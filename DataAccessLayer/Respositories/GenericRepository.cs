@@ -1,10 +1,11 @@
 ﻿using DataAccessLayer.Abstract;
-using DataAccessLayer.Concrete.Context;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,7 +39,14 @@ namespace DataAccessLayer.Respositories
             c.SaveChanges();
         }
 
-        public void Update(T t)
+		public List<T> GetListAll(Expression<Func<T, bool>> filter)
+		{
+			using var c = new Context();
+			return c.Set<T>().Where(filter).ToList();
+            // Filterden gelen idiyi bilgilerini listele
+		}
+
+		public void Update(T t)
         {
             using var c = new Context();
             c.Update(t);

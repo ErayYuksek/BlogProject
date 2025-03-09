@@ -1,0 +1,67 @@
+﻿@model EntityLayer.Concrete.Writer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+        <h3 class="tittle">Yazar Kayıt Sayfası</h3>
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                @using (Html.BeginForm("Index", "Register", FormMethod.Post))
+                {
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">Adınız Soyadınız</label>
+                            @Html.TextBoxFor(x=>x.Name, new {@class="form-control"})
+                            @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+
+
+
+                           @*  <input type="text" class="form-control" id="validationDefault01" placeholder="" required="" name="Name"> *@
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom02">Mail Adresi</label>
+                            @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Mail, null, new { @class = "text-danger" })
+                       @*      <input type="email" class="form-control" id="validationDefault02" placeholder="" required="" name="Mail"> *@
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1 mb-2">Şifre</label>
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Password, null, new { @class = "text-danger" })
+                    @*         <input type="password" class="form-control" id="password1" placeholder="" required="" name="Password"> *@
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword2 mb-2">Görsel Dosya Yolu</label>
+                            @Html.TextBoxFor(x => x.Image, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Image, null, new { @class = "text-danger" })
+                         @*    <input type="text" class="form-control" id="password2" placeholder="" required="" name="Image"> *@
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary submit mb-4"> Kayıt Ol </button>
+                    <p>
+                        <a href="#" id="btn1">Tüm şartları okudum ,kabul ediyorum</a>
+                    </p>
+                }
+                
+
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <script>
+        $('#btn1').click(function () {
+            swal("Site Kabul Şartları","eb sitemizi kullanırken belirlenen kurallar ve şartlar hakkında bilgi sahibi olduğunuzu ve bunlara uymayı kabul ettiğinizi onaylıyorsunuz.Kişisel verilerinizin nasıl toplandığı, kullanıldığı ve korunduğu hakkında bilgi sağlayan Gizlilik Politikasını okudunuz ve kabul ettiniz.Sizlere güncellemeler, bültenler ve promosyonlar göndermemize izin veriyorsunuz.");
+        });
+    </script>
+</section>

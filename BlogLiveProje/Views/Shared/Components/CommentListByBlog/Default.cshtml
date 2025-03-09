@@ -1,0 +1,23 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Comment>
+<div class="comment-top">
+    <h4>Yorumlar</h4>
+    @foreach (var item in Model)
+    {
+        <div class="media mb-3">
+
+
+
+            <img src="~/CoreBlogTema/images/t1.jpg" alt="" class="img-fluid mt-3"/>
+            <div class="media-body ml-3">
+                <h5 class="mt-3">@item.UserName</h5>
+                <p>
+                    @item.Content
+                </p>
+
+           
+
+            </div>
+
+        </div>
+    }
+</div>

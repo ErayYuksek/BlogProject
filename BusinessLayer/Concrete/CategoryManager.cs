@@ -1,6 +1,5 @@
 ﻿using BusinessLayer.Abstract;
-using DataAccessLayer.EntityFramework;
-using DataAccessLayer.Respositories;
+using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -12,38 +11,66 @@ namespace BusinessLayer.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        EfCategoryRepository efCategoryRepository;
+        ICategoryDal _categoryDal;
 
-        public CategoryManager(EfCategoryRepository efCategoryRepository)
+        public CategoryManager(ICategoryDal categoryDal)
         {
-            this.efCategoryRepository = efCategoryRepository;
+            _categoryDal = categoryDal;
         }
 
-        public void CategoryAdd(Category category)
+        public Category TGetById(int id)
         {
-            // Generic Repository den aldıgımız methotları kullancaz
-            efCategoryRepository.Insert(category);
-        }
-
-        public void CategoryDelete(Category category)
-        {
-            efCategoryRepository.Delete(category);
-        }
-
-        public void CategoryUpdate(Category category)
-        {
-            efCategoryRepository.Update(category);
-        }
-
-        public Category GetById(int id)
-        {
-            return efCategoryRepository.GetByID(id);
-
+            return _categoryDal.GetByID(id);
         }
 
         public List<Category> GetLlistt()
         {
-            return efCategoryRepository.GetListAll();
+            return _categoryDal.GetListAll().ToList();
         }
+
+        public void TAdd(Category t)
+        {
+            _categoryDal.Insert(t);
+        }
+
+        public void TDelete(Category t)
+        {
+            _categoryDal.Delete(t);
+        }
+
+        public void TUpdate(Category t)
+        {
+            _categoryDal.Update(t);
+        }
+
+
+
+        //public Category GetById(int id)
+        //{
+        //    return _categoryDal.GetByID(id);
+        //}
+
+        //public List<Category> GetLlistt()
+        //{
+
+        //    return _categoryDal.GetListAll();
+        //}
+
+
+
+        //public void TAdd(Category t)
+        //{
+        //    _categoryDal.Insert(t);
+        //}
+
+        //public void TDelete(Category t)
+        //{
+        //    _categoryDal.Delete(t);
+        //}
+
+        //public void TUpdate(Category t)
+        //{
+        //   _categoryDal.Update(t);
+        //}
     }
 }
