@@ -1,3 +1,11 @@
-* linguist-detectable=true
-*.cs linguist-language=C#
-*.cshtml linguist-language=C#
+*.cs linguist-detectable=true
+*.csproj linguist-detectable=true
+*.sln linguist-detectable=true
+*.razor linguist-language=C#
+*.config linguist-vendored
+*.json linguist-vendored
+*.html linguist-vendored
+*.css linguist-vendored
+*.js linguist-vendored
+*.svg linguist-vendored
+*.scss linguist-vendored
